@@ -1,0 +1,51 @@
+<div
+  class="card mb-4"
+  style="padding: 20px"
+  *ngFor="let appointment of appointments"
+>
+  <div class="block container-fluid">
+    <h5 class="card-title">
+      {{ appointment.description }}
+    </h5>
+  </div>
+  <div class="block container-fluid">
+    <span class="card-name"> {{ appointment.name }} </span>
+    <span class="card-location"
+      >{{ appointment.branch }}, {{ appointment.address }}
+    </span>
+  </div>
+  <div class="block container-fluid">
+    <span class="card-date"> {{ appointment.date }} </span>
+    <span class="card-time"> {{ appointment.time }} </span>
+  </div>
+  <div class="block container-fluid" style="margin-top: 5px">
+    <button
+      (click)="cancelAppointment(appointment.id)"
+      class="btn btn-light"
+      style="
+        margin-right: 10px;
+        font-weight: bold;
+        border: 1px black solid;
+        border-radius: 15px;
+      "
+    >
+      Cancel
+    </button>
+    <button
+      class="btn btn-light"
+      style="
+        margin-right: 10px;
+        background-color: #1e4fce;
+        color: white;
+        border-radius: 15px;
+      "
+    >
+      <a
+        [routerLink]="['reschedule-appointment/', appointment.id]"
+        style="text-decoration: none; color: white"
+      >
+        Reschedule</a
+      >
+    </button>
+  </div>
+</div>
